@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 class CommentList extends React.Component {
 
     renderComments = () => {
-        this.props.comments.map(comment => {
-            return <li key={comment}></li>
-        })
+        return this.props.comments.map(comment => 
+             <li key={comment}>{comment}</li>
+        )
     }
     render() {
         return (
@@ -24,3 +24,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(CommentList);
+export { CommentList as PureList };
