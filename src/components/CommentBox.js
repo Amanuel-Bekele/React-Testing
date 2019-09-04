@@ -13,12 +13,14 @@ class CommentBox extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.saveComment(this.state.comment);
+        if(this.state.comment)
+            this.props.saveComment(this.state.comment);
         this.setState({ comment: '' });
     };
 
     render() {
         return (
+            <div>
             <form onSubmit={e => this.handleSubmit(e)}>
                 <h4>Add a Comment</h4>
                 <textarea value={this.state .comment}
@@ -27,6 +29,8 @@ class CommentBox extends React.Component {
                     <button>Submit Comment</button>
                 </div>
             </form>
+            <button className="fetch-comments" onClick={() => this.props.fetchComments()}>Fetch Comments</button>
+            </div>
         )
     }
 }
